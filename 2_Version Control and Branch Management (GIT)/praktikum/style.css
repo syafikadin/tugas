@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #232520;
+}
+
+nav{
+    display: flex;
+    background-color: #232520;
+    justify-content: space-around;
+    height: 80px;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.content-1 img{
+    width: 150px;
+    height: 150px;
+}
+
+.content-1 .deskripsi{
+    color: white;
+}
