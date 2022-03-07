@@ -1,0 +1,17 @@
+*{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.navbar .container .e-logo{
+    color: green;
+}
+
+.content-2 a{
+    text-decoration: none;
+}
+
+.footer{
+    background-color: #2a2c30;
+    color: white;
+    padding-left: 20px;
+}
