@@ -1,17 +1,107 @@
 *{
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar .nav-item{
+    font-size: 12px;
+    letter-spacing: -1px;
 }
 
 .navbar .container .e-logo{
     color: green;
 }
 
-.content-2 a{
+.content-1 a{
     text-decoration: none;
+    color: #2a2c30;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.content-1 h1{
+    font-weight: 300;
+}
+
+.content-1 .desc-item{
+    font-weight: 400;
+}
+
+.content-2{
+    margin-top: 100px;
+}
+
+.content-2 .list-item{
+    letter-spacing: 2px;
+}
+
+.content-2 .deskripsi h1 .bolder{
+    font-weight: 700;
+}
+
+.content-2 .deskripsi h1 .lighter{
+    font-weight: lighter;
+}
+
+.content-2 .deskripsi span{
+    font-weight: 100;
 }
 
 .footer{
     background-color: #2a2c30;
     color: white;
-    padding-left: 20px;
+    padding: 50px 200px 50px 200px;
+}
+
+.footer .logo{
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.footer .desc{
+    font-size: 10px;
+}
+
+.footer a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+.footer h5{
+    font-size: 14px;
+}
+
+.footer .nav-item{
+    font-size: 10px;
+}
+
+.footerEnd span{
+    color: #71c55d;
+}
+
+@media (max-width: 768px){
+    
+}
+
+@media (max-width: 576px){
+    .content-2 .img-fluid{
+        width: 50%;
+        margin-left: 25%;
+        margin-bottom: 20px;
+    }
+
+    .content-2 .deskripsi{
+        width: 90%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .footer .row{
+        background-color: #71c55d;
+        width: 170%;
+    }
+
+    .footer .col-2{
+        margin-top: 50px;
+    }
 }

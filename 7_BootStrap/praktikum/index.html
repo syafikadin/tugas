@@ -11,6 +11,7 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     
     <title>Tugas Bootstrap</title>
   </head>
@@ -29,14 +30,23 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Screenshots</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Team</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
               </li>
               <li class="nav-item dropdown text-success">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  Dropdown
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -44,12 +54,16 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
             </ul>
           </div>
         </div>
-      </nav>    
+      </nav>
+      <!-- End Navbar -->
 
-      <!-- Content1 -->
+      <!-- Content-1 -->
       <div class="container content-1 text-center mt-5 mb-5">
         <h1>Simple Systeme Fordiscount</h1>
         <p class="mt-4">Integer Cursus Bibendum Augue Ac Cursus</p>
@@ -57,101 +71,110 @@
         <div class="row pt-5">
           <div class="col">
             <img src="img/cloud.svg" class="img-fluid" alt="cloud" width="100px" height="100px">
-            <p><b>INTRODUCING WHATSAPP</b></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
-            <a href="#">Read More</a>
+            <div class="deskripsi pt-4">
+              <p class="desc-item"><b>INTRODUCING WHATSAPP</b></p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
+              <a href="#">Read More</a>
+            </div>
           </div>
           <div class="col">
             <img src="img/planet.svg" class="img-fluid" alt="planet" width="100px" height="100px">
-            <p><b>USER FRIENDLY INTERFACE</b></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
-            <a href="#">Read More</a>
+            <div class="deskripsi pt-4">
+              <p class="desc-item"><b>USER FRIENDLY INTERFACE</b></p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
+              <a href="#">Read More</a>
+            </div>
           </div>
           <div class="col">
             <img src="img/asteroid.svg" class="img-fluid" alt="asteroid" width="100px" height="100px">
-            <p><b>BUILD THE APP EVERYONE LOVE</b></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
-            <a href="#">Read More</a>
+            <div class="deskripsi pt-4">
+              <p class="desc-item"><b>BUILD THE APP EVERYONE LOVE</b></p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting indsutry</p>
+              <a href="#">Read More</a>
+            </div>
           </div>
         </div>
       </div>
+      <!-- End Content-1 -->
 
-      <!-- Content 2 -->
+      <!-- Content-2 -->
       <div class="content-2">
         <div class="row justify-content-center">
           <div class="col-lg-4 col-md-6 gambar">
             <img src="img/about-img.png" alt="samsung" width="350px" class="img-fluid">
           </div>
           <div class="col-lg-6 col-md-6 deskripsi">
-            <h1><b>STARTUP</b><span> UI Design Mobile</span></h1>
+            <h1><span class="bolder">ESTARTUP </span><span class="lighter">UI Design Mobile</span></h1>
             <p class="mt-4">Consectetur adipiscing elit, sed do elusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamci laboris misi ut aliquip ex ea commodo consequat</p>
-            <ul>
-              <li><a href="#">> Creative Design</a></li>
-              <li><a href="#">> Retina Ready</a></li>
-              <li><a href="#">> Easy To Use</a></li>
-              <li><a href="#">> Unlimited Features</a></li>
-              <li><a href="#">> Unlimited Features</a></li>
-            </ul>
+            <p class="list-item"><b>> Creative Design</b></p>
+            <p class="list-item"><b>> Retina Ready</b></p>
+            <p class="list-item"><b>> Easy To Use</b></p>
+            <p class="list-item"><b>> Unlimited Features</b></p>
+            <p class="list-item"><b>> Unlimited Features</b></p>
           </div>
         </div>
       </div>
+      <!-- End Content-2 -->
 
       <!-- Footer -->
       <div class="container-fluid footer mt-5">
-        <footer class="row row-cols-6 py-5  justify-content-center">
-          <div class="col-4">
-            <a href="#">E Startup</a>
-            <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the.</p>
+        <footer class="row justify-content-center">
+          <div class="col-5 col-lg-4 col-sm-12">
+            <a href="#" class="logo">eStartup</a>
+            <p class="desc">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the.</p>
           </div>
       
           <div class="col-2">
             <h5>ABOU US</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About Us</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features Item</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Live Streaming</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">About Us</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Features Item</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Live Streaming</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Privacy Policy</a></li>
             </ul>
           </div>
       
           <div class="col-2">
             <h5>ABOU US</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About Us</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features Item</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Live Streaming</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">About Us</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Features Item</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Live Streaming</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Privacy Policy</a></li>
             </ul>
           </div>
       
           <div class="col-2">
             <h5>ABOU US</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About Us</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features Item</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Live Streaming</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Faq</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Editor Help</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Contact Us</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Privacy Policy</a></li>
             </ul>
           </div>
       
           <div class="col-2">
             <h5>ABOU US</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About Us</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features Item</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Live Streaming</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">About Us</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Features Item</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Live Streaming</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Privacy Policy</a></li>
             </ul>
           </div>
         </footer>
       </div>
+      <!-- End Footer -->
 
-      <div class="container">
-        <footer class="py-3 my-4">
+      <!-- Copyright -->
+      <div class="container footerEnd">
+        <footer class="my-4">
           <p class="text-center">&copy; Copyright eStartup, Allrights reserved.</p>
-          <p class="text-center">Designed by BootstrapMade</p>
+          <p class="text-center">Designed by <span>BootstrapMade</span></p>
         </footer>
       </div>
+      
 
     <!-- Optional JavaScript; choose one of the two! -->
 
