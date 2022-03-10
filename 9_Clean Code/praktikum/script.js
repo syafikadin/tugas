@@ -50,4 +50,7 @@ void main(){
     mobilCepat = new mobil();
     mobilCepat.berjalan();
 
+    mobilLamban = new mobil();
+    mobilLamban.berjalan();
+
 }
