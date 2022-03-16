@@ -106,7 +106,7 @@ Macam Vue Directive
 Shorthand Vue Directive
 Kusus untuk v-bind dan v-on dapat disingkat dengan sintaks seperti berikut :
 <!-- tanpa singkatan -->
-<a v-blind:href="url">... </a>
+<a v-bind:href="url">... </a>
 
 <!-- disingkat -->
 <a :href="url">... </a>
