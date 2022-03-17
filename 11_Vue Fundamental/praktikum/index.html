@@ -12,13 +12,14 @@
 <body>
 
     <div id="app">
+        <p v-if="toDoList.length == 0">Data Masih Kosong!</p>
         <ol>
-            <li v-for="list in toDoList">
-                {{ list }}
+            <li v-for="(list, index) in toDoList">
+                {{ list }} <button v-on:click="deleteArray(index)">Hapus</button>
             </li>
         </ol>
-        <input type="text" v-model:value ="message">
-        <button v-on:click="tambahArray(message)">Tambahkan</button>
+        <input type="text" v-model:value ="message" id="idText">
+        <button v-on:click="addArray(message)" id="idButton">Tambahkan</button>
         <p v-if="toDoList.length >= 4">Hebat!</p>
     </div>
 
@@ -32,9 +33,12 @@
                 }
             },
             methods: {
-                tambahArray(message){
+                addArray(message){
                     this.toDoList.push(message)
                     this.message = ''
+                },
+                deleteArray(message){
+                    this.toDoList.splice(message, 1)
                 }
             }
         })
