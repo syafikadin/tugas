@@ -16,18 +16,16 @@
 
       <input type="text" v-model = message v-on:keyup.enter="addArray(message)" width="40%">
 
-    <!-- Mode Input -->
-      <div v-if="isEdit == false">
+      <div v-if="isEdit">
+        <button @click="updateArray(message)">Perbarui</button>
+      </div>
+
+      <div v-else>
         <button v-on:click="addArray(message)" class="buttonUtama">Tambahkan</button>
       </div>
 
       <p v-if="toDoList.length >= 4">Hebat!</p>
 
-    <!-- Mode Edit -->
-      <div v-if="isEdit == true">
-        <button @click="updateArray(message)">Perbarui</button>
-        <button>Batal</button>
-      </div>
     </table>
 
   </div>
@@ -35,14 +33,21 @@
 
 <script>
 
+// import CompButtonTambah from '@components/CompButtonTambah.vue'
+
 export default {
   name: 'App',
+  components: {
+    // CompButtonTambah
+  },
   data() {
     return{
       message :"",
+      newmessage : "",
       toDoList : [],
       isEdit : false,
-      indexKe : null
+      indexKe : null,
+      listTes: []
     }
   },
   methods: {
@@ -65,14 +70,15 @@ export default {
     },
 
     showArray(index, message){
-      this.message = message
       this.isEdit = true
+      this.message = message
       this.indexKe = index
     },
 
     updateArray(message){
       this.toDoList.splice(this.indexKe, 1, message)
       this.isEdit = false
+      this.message = ""
     }
   }
 }
@@ -86,17 +92,6 @@ export default {
 
 table{
   padding: 20px;
-}
-
-
-.buttonHapus{
-  /* background-color: rgb(206, 80, 80); */
-  /* color: white; */
-}
-
-.buttonEdit{
-  /* background-color: rgb(46, 61, 196); */
-  /* color: white; */
 }
 
 li button {
