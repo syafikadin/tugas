@@ -20,6 +20,11 @@
 <script>
 
 export default {
+  data: () => ({
+      drawer: false,
+      group: null,
+      message: ''
+    }),
   name: 'HomeView',
   computed: {
     news(){
@@ -28,7 +33,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('fetchNews')
-  }
+  },
 }
 </script>
 

@@ -10,8 +10,10 @@
       <v-toolbar-title>App News</v-toolbar-title>
 
       <v-spacer></v-spacer>
+      
+      <v-text-field v-model = message></v-text-field>
 
-      <v-btn icon>
+      <v-btn icon @click="changeCategories(message)">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
@@ -32,20 +34,21 @@
           active-class="deep-purple--text text--accent-4"
         >
         
-          <v-list-item v-for="(itemNews, index) in news" :key="index">
-            <router-link :to="'/detail/id' + index">
-              <v-container>
-                <v-img :src="itemNews.urlToImage" width="30px" height="30px"/>
-                <v-list-item-title class="newsItem">{{ itemNews.title.slice(0, 30) }}</v-list-item-title>
-              </v-container>
-            </router-link>
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Football')" class="newsItem">Football</v-list-item-title>
+          </v-list-item>
+            
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Car')"  class="newsItem">Car</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Technology')" class="newsItem">Technology</v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-
-
 
     <v-main>
       <router-view/>
@@ -59,6 +62,7 @@
     data: () => ({
       drawer: false,
       group: null,
+      message: ''
     }),
 
     watch: {
@@ -73,6 +77,12 @@
     },
     mounted() {
       this.$store.dispatch('fetchNews')
+    },
+    methods : {
+      changeCategories(payload){
+        this.$store.dispatch('changeCategories', payload)
+        this.$store.dispatch('fetchNews')
+      }
     }
   }
 </script>
