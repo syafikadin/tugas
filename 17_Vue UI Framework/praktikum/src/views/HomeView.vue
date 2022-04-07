@@ -1,15 +1,78 @@
 <template>
   <v-app>
+    
+    <v-app-bar
+      color="primary"
+      dark
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>App News</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+      
+      <v-text-field v-model = message></v-text-field>
+
+      <v-btn icon @click="changeCategories(message)">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+      color="#2596be"
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+        
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Football')" class="newsItem">Football</v-list-item-title>
+          </v-list-item>
+            
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Car')"  class="newsItem">Car</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title @click="changeCategories('Technology')" class="newsItem">Technology</v-list-item-title>
+          </v-list-item>
+
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
     <div class="home">
     <h1>Berita Terkini</h1>
       <div class="container" v-for="(itemNews, index) in news" :key="index">
         <router-link :to="'/detail/id' + index">
           <div class="barNews">
               <v-img :src="itemNews.urlToImage" />
-              <p><b>{{ itemNews.author }}</b></p>
-              <p v-if="news[index].author === null"><b>Anonym</b></p>
-              <p><b>{{ itemNews.title }}</b></p>
-              <p>{{ itemNews.publishedAt  }}</p>
+              <h1>{{ itemNews.title }}</h1>
+              <p>{{ itemNews.description }}</p>
+              <v-btn v-if="news[index].author === null"
+                rounded
+                class="text-capitalize"
+              >
+                Anonym
+              </v-btn>
+
+              <v-btn v-else
+                rounded
+                class="text-capitalize"
+              >
+                {{ itemNews.author }}
+              </v-btn>
+              <p> </p>
+              <v-btn>Read More</v-btn>
           </div>
         </router-link>
       </div> 
@@ -18,23 +81,34 @@
 </template>
 
 <script>
-
-export default {
-  data: () => ({
+  export default {
+    
+    data: () => ({
       drawer: false,
       group: null,
       message: ''
     }),
-  name: 'HomeView',
-  computed: {
-    news(){
-      return this.$store.state.listNews
+
+    watch: {
+      group () {
+        this.drawer = false
+      },
     },
-  },
-  mounted() {
-    this.$store.dispatch('fetchNews')
-  },
-}
+    computed: {
+      news(){
+        return this.$store.state.listNews
+      },
+    },
+    mounted() {
+      this.$store.dispatch('fetchNews')
+    },
+    methods : {
+      changeCategories(payload){
+        this.$store.dispatch('changeCategories', payload)
+        this.$store.dispatch('fetchNews')
+      }
+    }
+  }
 </script>
 
 <style scoped>
