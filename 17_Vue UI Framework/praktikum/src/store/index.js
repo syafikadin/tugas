@@ -13,7 +13,8 @@ export default new Vuex.Store({
   plugins: [persistedState],
   state: {
     listNews: [],
-    categories: ''
+    categories: '',
+    // category: ["business", "entertainment", "general", "health", "science", "sports", "technology"]
   },
   mutations: {
     setListNews(state, payload){

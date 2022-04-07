@@ -34,7 +34,7 @@
           active-class="deep-purple--text text--accent-4"
         >
         
-          <v-list-item>
+          <!-- <v-list-item>
             <v-list-item-title @click="changeCategories('Football')" class="newsItem">Football</v-list-item-title>
           </v-list-item>
             
@@ -44,6 +44,10 @@
 
           <v-list-item>
             <v-list-item-title @click="changeCategories('Technology')" class="newsItem">Technology</v-list-item-title>
+          </v-list-item> -->
+
+          <v-list-item v-for="(list, index) in category" :key="index">
+            <v-list-item-title class="text-capitalize" @click="changeCategories(list)">{{ list }}</v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
@@ -86,7 +90,8 @@
     data: () => ({
       drawer: false,
       group: null,
-      message: ''
+      message: '',
+      category: ["business", "entertainment", "general", "health", "science", "sports", "technology"]
     }),
 
     watch: {
