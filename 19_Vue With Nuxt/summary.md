@@ -6,7 +6,7 @@
 2. Pemasangan Nuxt
     Untuk membuat sebuah aplikasi baru
     npx create-nuxt-app <nama-proyek>
-    npm create-nuxt-app ./ --overwrite-dir
+    npx create-nuxt-app ./ --overwrite-dir
 3. Penggunaan Nuxt
     Untuk menjalankan aplikasi, terdapat beberapa perintah yang tertulis di script di dalam package.json.
     npm run dev
