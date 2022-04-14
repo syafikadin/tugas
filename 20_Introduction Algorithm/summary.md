@@ -26,3 +26,9 @@
     PRINT Luas
 5. Flowchart
     Adalah suatu bagan dengan simbol tertentu yang menggambarkan urutan dan hubungan antar proses secara mendetail. Flowchart digunakan untuk merepresentasikan sebuah algoritma dalam suatu program.
+    Terdapat beberapa simbol flowchart
+    - Mulai / Selesai
+    - Proses
+    - Input / Output
+    - Pengkondisian
+    - Looping
