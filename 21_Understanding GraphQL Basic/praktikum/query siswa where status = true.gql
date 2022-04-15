@@ -1,0 +1,9 @@
+query MyQuery($_eq: Boolean) {
+  anggota(where: {keterangans: {status: {_eq: $_eq}}}) {
+    nama
+  }
+}
+
+{
+  "_eq": true
+}

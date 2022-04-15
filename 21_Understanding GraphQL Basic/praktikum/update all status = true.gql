@@ -1,0 +1,16 @@
+mutation MyMutation($status: Boolean, $_eq: Boolean) {
+  update_keterangan(where: {status: {_eq: $_eq}}, _set: {status: $status}) {
+    returning {
+      id
+      id_anggota
+      nilai
+      pelajaran
+      status
+    }
+  }
+}
+
+{
+  "_eq": false,
+  "status": true
+}
