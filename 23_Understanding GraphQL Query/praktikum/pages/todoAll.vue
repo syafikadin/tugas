@@ -12,15 +12,16 @@
           <template v-slot:default>
             <thead>
               <tr>
-                <th class="text-left">
+                <th class="text-center">
                   ID
                 </th>
-                <th class="text-left">
+                <th class="text-center">
                   Title
                 </th>
                 <th></th>
                 <th></th>
-                <th class="text-left">
+                <th class="text-center">User</th>
+                <th class="text-center">
                   isDone?
                 </th>
               </tr>
@@ -33,7 +34,8 @@
               >
                 <td>{{ item.id }}</td>
                 <td colspan="2">{{ item.title }}</td>
-                <td></td>
+                <td></td>                
+                <td class="text-capitalize">{{ item.user.name }}</td>
                 <td>{{ item.isDone }}</td>
                 <td><v-btn small>Edit</v-btn></td>
                 <td><v-btn small>Delete</v-btn></td>
@@ -59,8 +61,7 @@ import gql from 'graphql-tag'
 export default {
   data(){
     return{
-      todo: '',
-      title: '',
+      newTodo: '',
       inputId: '',
     }
   },
@@ -72,9 +73,12 @@ export default {
           return gql`
               query todoList {
                 todoList {
-                id
-                title
-                isDone
+                  id
+                  title
+                  isDone
+                  user{
+                    name
+                  }
                 }
               }
             `
@@ -85,6 +89,9 @@ export default {
                   id
                   title
                   isDone
+                  user{
+                    name
+                  }
                 }
               }
             `
@@ -105,7 +112,5 @@ export default {
       },
     }
   },
-
-
 }
 </script>
