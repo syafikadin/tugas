@@ -6,7 +6,7 @@
         <h2 class="text-center mb-4">My Todolist</h2>
         <h3>Filter :</h3>
         <div>
-          <v-text-field v-model="inputId" label="Search By ID"></v-text-field>
+          <v-text-field v-model="inputId" label="Search By ID" type="number"></v-text-field>
         </div>
         <v-simple-table dark class="mt-6">
           <template v-slot:default>
@@ -61,54 +61,49 @@ export default {
     return{
       todo: '',
       title: '',
-      inputId: 3,
+      inputId: '',
     }
   },
 
   apollo:{
-    todoList(){
-      if(this.inputId === ''){
-        return {
-          query: gql`
-            query todoList {
-              todoList {
-              id
-              title
-              isDone
-              }
-            }
-          `,
-          update(data){
-            return data.todoList;
-          },
-        }
-      }
-
-      else if(this.inputId === 3){
-        return {
-          query: gql`
-            query todoList($id: Int){
-              todoList(where: {id: {_eq: $id}}){
+    todoList: {
+      query(){
+        if(this.inputId === '0' || this.inputId === ''){
+          return gql`
+              query todoList {
+                todoList {
                 id
                 title
                 isDone
+                }
               }
-            }
-          `,
-
-          variables(){
-            return {
-              id: this.inputId
-            }
-          },
-
-          update(data){
-            return data.todoList;
-          },
-            
+            `
+        } else {
+          return gql`
+              query todoList($id: Int){
+                todoList(where: {id: {_eq: $id}}){
+                  id
+                  title
+                  isDone
+                }
+              }
+            `
+          }
+      },
+      variables(){
+        if (this.inputId === '0' || this.inputId === '') {
+          return{}
+        } else {
+          return {
+            id: this.inputId
           }
         }
-      }
+      },
+
+      update(data){
+        return data.todoList;
+      },
+    }
   },
 
 
