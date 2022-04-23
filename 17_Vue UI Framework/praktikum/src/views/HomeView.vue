@@ -111,6 +111,7 @@
       changeCategories(payload){
         this.$store.dispatch('changeCategories', payload)
         this.$store.dispatch('fetchNews')
+        this.message = ''
       }
     }
   }

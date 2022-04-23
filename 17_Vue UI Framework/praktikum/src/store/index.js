@@ -14,7 +14,6 @@ export default new Vuex.Store({
   state: {
     listNews: [],
     categories: '',
-    // category: ["business", "entertainment", "general", "health", "science", "sports", "technology"]
   },
   mutations: {
     setListNews(state, payload){
@@ -28,9 +27,8 @@ export default new Vuex.Store({
     changeCategories(store, payload){
       store.commit("setCategories", payload)
     },
-    fetchNews(store){
-      axios.get("https://newsapi.org/v2/everything?q=" + this.state.categories + "&apiKey=c7d465fddb28475881ccd0ba8642c64b").then((response) => {
-        console.log("response", response)
+    fetchNews(store) {
+      axios.get("https://newsapi.org/v2/everything?q="+ this.state.categories + "&apiKey=c7d465fddb28475881ccd0ba8642c64b").then((response) => {
         store.commit("setListNews", response.data.articles)
       })
     }
