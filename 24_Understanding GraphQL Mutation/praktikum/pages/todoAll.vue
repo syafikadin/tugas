@@ -20,25 +20,22 @@
                 </th>
                 <th></th>
                 <th></th>
-                <th class="text-center">User</th>
                 <th class="text-center">
-                  isDone?
+                  Status?
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr v-if="$apollo.loading">Loading ...</tr>
               <tr
-                v-for="item in todoList"
-                :key="item.id"
+                v-for="item in todoList" :key="item.id"
               >
                 <td>{{ item.id }}</td>
                 <td colspan="2">{{ item.title }}</td>
                 <td></td>                
-                <td class="text-capitalize">{{ item.user.name }}</td>
-                <td>{{ item.isDone }}</td>
-                <td><v-btn small>Edit</v-btn></td>
-                <td><v-btn small>Delete</v-btn></td>
+                <td>{{ item.isDone ? 'Sudah' : 'Belum' }}</td>
+                <td><v-btn small @click="changeModeEdit(item.id)">Edit</v-btn></td>
+                <td><v-btn small @click="deleteTodo(item.id)">Delete</v-btn></td>
               </tr>
             </tbody>
           </template>
@@ -46,10 +43,22 @@
       </v-col>
       
       <v-col class="createTodo">
-        <h2 class="text-center">Create Todo</h2>
-        <v-text-field v-model="newTitle" label="Title"></v-text-field>
-        <v-text-field v-model="newUserId" label="User ID"></v-text-field>
-        <v-btn block>Create</v-btn>
+        <h2 class="text-center mt-11">Create Todo</h2>
+        <form @submit.prevent="createTodo">
+          <v-text-field v-model="newTitle" label="Title" required></v-text-field>
+          <v-btn block type="submit">Create</v-btn>
+        </form>
+        <div v-if="modeEdit === true">
+          <h2 class="text-center mt-16">Edit Todo</h2>
+          <form @submit.prevent="updateTodo">
+            <v-text-field v-model="editTitle" label="Title Baru" required></v-text-field>
+            <v-radio-group v-model="editStatus" row>
+              <v-radio label="Sudah" :value="true"></v-radio>
+              <v-radio label="Belum" :value="false"></v-radio>
+            </v-radio-group>
+            <v-btn block type="submit">Update</v-btn>
+          </form>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -62,8 +71,11 @@ export default {
   data(){
     return{
       newTitle: '',
-      newUserId: '',
       inputId: '',
+      indexId: '',
+      modeEdit: false,
+      editTitle: '',
+      editStatus: false
     }
   },
 
@@ -77,9 +89,6 @@ export default {
                   id
                   title
                   isDone
-                  user{
-                    name
-                  }
                 }
               }
             `
@@ -90,9 +99,6 @@ export default {
                   id
                   title
                   isDone
-                  user{
-                    name
-                  }
                 }
               }
             `
@@ -113,42 +119,73 @@ export default {
       },
     }
   },
-  // methods: {
-  //   insertTodo(){
-  //     this.$apollo.mutate({
-  //       mutation: gql`
-  //         mutation addTodo($title: String, $userId: Int) {
-  //           insert_todoList_one(object: {title: $title, userId: $userId}) {
-  //             id
-  //             title
-  //             isDone
-  //             user {
-  //               name
-  //             }
-  //           }
-  //         }
-  //       `
-  //     })
-  //   },
-  //   variables(){
-  //     return {
-  //       title: this.newTitle,
-  //       userId: this.newUserId
-  //     }
-  //   },
+  methods: {
+    createTodo() {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation createTodo($title: String) {
+            insert_todoList_one(object: {title: $title}) {
+              id
+              isDone
+              title
+            }
+          }
+        `,
+        variables: {
+          title: this.newTitle
+        }
+      })
+      this.newTitle = ''
+    },
 
-  //   update: {
-  //     todoList: (prev, {mutationResult}) => {
-  //       const newTitle = mutationResult.data.insert_todoList_one
-  //       const newUserId = mutationResult.data.insert_todoList_one
-  //       const newTitles = [newTitle, ...prev.title]
-  //       const newUsersId = [newUserId, ...prev.userId]
-  //       return {
+    changeModeEdit(inputId) {
+      this.modeEdit = true
+      this.indexId = inputId
+    }, 
 
-  //       }
-  //     }
-  //   }
-  // }
+    deleteTodo(inputId){
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation deleteTodo($id: Int) {
+            delete_todoList(where: {id: {_eq: $id}}) {
+              returning {
+                id
+                isDone
+                title
+              }
+            }
+          }
+        `,
+        variables: {
+          id: inputId
+        }
+      })
+    },
+
+    updateTodo(){
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation MyMutation($_eq: Int!, $isDone: Boolean, $title: String) {
+            update_todoList(where: {id: {_eq: $_eq}}, _set: {isDone: $isDone, title: $title}) {
+              returning {
+                id
+                isDone
+                title
+              }
+            }
+          }
+        `,
+        variables: {
+          _eq: this.indexId,
+          title: this.editTitle,
+          isDone: this.editStatus
+        }
+      })
+      this.modeEdit = false
+    }
+
+
+  }
 
 }
 </script>
