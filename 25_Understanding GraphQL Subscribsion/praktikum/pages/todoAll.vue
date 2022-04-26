@@ -80,6 +80,7 @@ export default {
   },
 
   apollo:{
+
     todoList: {
       query(){
         if(this.inputId === '0' || this.inputId === ''){
@@ -113,12 +114,31 @@ export default {
           }
         }
       },
-
       update(data){
         return data.todoList;
       },
+      subscribeToMore: {
+        document: gql`
+          subscription subscribeToMore {
+            todoList {
+              id
+              isDone
+              title
+            }
+          }
+        `,
+        updateQuery: (previousResult, { subscriptionData }) => {
+          console.log("~ todoList ~ Prev", previousResult)
+          console.log("Subscribtion Data ", subscriptionData)
+          return {
+            todoList: subscriptionData.data.todoList
+          }
+        },
+      },
+
     }
   },
+
   methods: {
     createTodo() {
       this.$apollo.mutate({
@@ -184,8 +204,7 @@ export default {
         }
       })
       this.modeEdit = false
-    }
-
+    },
 
   }
 

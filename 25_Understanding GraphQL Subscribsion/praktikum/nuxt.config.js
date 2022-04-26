@@ -44,7 +44,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://todolistindividu.hasura.app/v1/graphql"
+        httpEndpoint: 'https://todolistindividu.hasura.app/v1/graphql',
+        wsEndpoint: 'wss://todolistindividu.hasura.app/v1/graphql'
       }
     }
   },
