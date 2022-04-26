@@ -124,10 +124,12 @@ export default {
       this.$apollo.mutate({
         mutation: gql`
           mutation createTodo($title: String) {
-            insert_todoList_one(object: {title: $title}) {
-              id
-              isDone
-              title
+            insert_todoList(objects: {title: $title}) {
+              returning {
+                id
+                isDone
+                title
+              }
             }
           }
         `,
@@ -146,7 +148,7 @@ export default {
     deleteTodo(inputId){
       this.$apollo.mutate({
         mutation: gql`
-          mutation deleteTodo($id: Int) {
+          mutation deleteTodo($id: Int!) {
             delete_todoList(where: {id: {_eq: $id}}) {
               returning {
                 id
